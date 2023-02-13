@@ -41,7 +41,7 @@ import ticketRepository from "@/repositories/ticket-repository";
   async function rules(userId: number, roomId: number) {
     const enrollment = await enrollmentRepository.findById(userId);
     if(!enrollment) {
-      throw notFoundError();
+      throw forbiddenError();
     }
   
     const ticket = await ticketRepository.findTicketByEnrollmentId(enrollment.id);
